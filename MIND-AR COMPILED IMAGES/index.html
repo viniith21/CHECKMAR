@@ -9,10 +9,6 @@
         .mindar-scanning-line {
             display: none;
         }
-
-        .mindar-scanning-line.active {
-            display: block;
-        }
     </style>
 </head>
 
@@ -30,6 +26,7 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel0"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
     </a-scene>
 
@@ -45,6 +42,7 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
     </a-scene>
 
@@ -60,9 +58,9 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel1"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
     </a-scene>
-
 
     <a-scene mindar-image="imageTargetSrc:chap3targets.mind" color-space="sRGB"
         renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
@@ -76,27 +74,22 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel2"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
     </a-scene>
 
     <script>
-        // Hide the scanning line initially
-        var scanningLines = document.getElementsByClassName('mindar-scanning-line');
-        for (var i = 0; i < scanningLines.length; i++) {
-            scanningLines[i].classList.remove('active');
-        }
-
-        // Show the scanning line when the image target is found
         AFRAME.registerComponent('mindar-image-target', {
             init: function () {
                 var el = this.el;
+                var scanningLine = el.querySelector('.mindar-scanning-line');
+                scanningLine.setAttribute('visible', false);
+
                 el.addEventListener('mindarimagetrackerenter', function () {
-                    var scanningLine = el.parentNode.querySelector('.mindar-scanning-line');
-                    scanningLine.classList.add('active');
+                    scanningLine.setAttribute('visible', true);
                 });
                 el.addEventListener('mindarimagetrackerleave', function () {
-                    var scanningLine = el.parentNode.querySelector('.mindar-scanning-line');
-                    scanningLine.classList.remove('active');
+                    scanningLine.setAttribute('visible', false);
                 });
             }
         });
