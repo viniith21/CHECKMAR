@@ -13,7 +13,6 @@
 </head>
 
 <body>
-
     <a-scene mindar-image="imageTargetSrc:chap0targets.mind" color-space="sRGB"
         renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
@@ -26,7 +25,6 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel0"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
-            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
     </a-scene>
 
@@ -42,7 +40,6 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
-            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
     </a-scene>
 
@@ -58,7 +55,6 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel1"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
-            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
     </a-scene>
 
@@ -74,15 +70,18 @@
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel2"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
-            <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
         </a-entity>
+    </a-scene>
+
+    <a-scene>
+        <a-plane class="mindar-scanning-line" position="0 0 0" width="1" height="0.01" color="red"></a-plane>
     </a-scene>
 
     <script>
         AFRAME.registerComponent('mindar-image-target', {
             init: function () {
                 var el = this.el;
-                var scanningLine = el.querySelector('.mindar-scanning-line');
+                var scanningLine = document.querySelector('.mindar-scanning-line');
                 scanningLine.setAttribute('visible', false);
 
                 el.addEventListener('mindarimagetrackerenter', function () {
