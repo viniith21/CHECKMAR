@@ -5,9 +5,19 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <style>
+        .mindar-scanning-line {
+            display: none;
+        }
+
+        .mindar-scanning-line.active {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
+
     <a-scene mindar-image="imageTargetSrc:chap0targets.mind" color-space="sRGB"
         renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
@@ -23,7 +33,9 @@
         </a-entity>
     </a-scene>
 
-    <a-scene mindar-image="imageTargetSrc:chap1targets.mind">
+    <a-scene mindar-image="imageTargetSrc:chap1targets.mind" color-space="sRGB"
+        renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
         <a-assets>
             <img id="card1" src="IMAGES/img124.jpg" />
             <a-asset-item id="avatarModel" src="girl.gltf"></a-asset-item>
@@ -36,7 +48,9 @@
         </a-entity>
     </a-scene>
 
-    <a-scene mindar-image="imageTargetSrc:chap2targets.mind">
+    <a-scene mindar-image="imageTargetSrc:chap2targets.mind" color-space="sRGB"
+        renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
         <a-assets>
             <img id="card2" src="IMAGES/img20.jpg" />
             <a-asset-item id="avatarModel1" src="HORSE.glb"></a-asset-item>
@@ -49,7 +63,10 @@
         </a-entity>
     </a-scene>
 
-    <a-scene mindar-image="imageTargetSrc:chap3targets.mind">
+
+    <a-scene mindar-image="imageTargetSrc:chap3targets.mind" color-space="sRGB"
+        renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
         <a-assets>
             <img id="card3" src="IMAGES/img54.jpg" />
             <a-asset-item id="avatarModel2" src="Bunny.glb"></a-asset-item>
@@ -61,6 +78,29 @@
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
         </a-entity>
     </a-scene>
+
+    <script>
+        // Hide the scanning line initially
+        var scanningLines = document.getElementsByClassName('mindar-scanning-line');
+        for (var i = 0; i < scanningLines.length; i++) {
+            scanningLines[i].classList.remove('active');
+        }
+
+        // Show the scanning line when the image target is found
+        AFRAME.registerComponent('mindar-image-target', {
+            init: function () {
+                var el = this.el;
+                el.addEventListener('mindarimagetrackerenter', function () {
+                    var scanningLine = el.parentNode.querySelector('.mindar-scanning-line');
+                    scanningLine.classList.add('active');
+                });
+                el.addEventListener('mindarimagetrackerleave', function () {
+                    var scanningLine = el.parentNode.querySelector('.mindar-scanning-line');
+                    scanningLine.classList.remove('active');
+                });
+            }
+        });
+    </script>
 
 </body>
 
