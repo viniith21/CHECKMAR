@@ -20,37 +20,37 @@
             <a-asset-item id="avatarModel0" src="HELI.glb"></a-asset-item>
             <a-asset-item id="avatarModel1" src="girl.gltf"></a-asset-item>
             <a-asset-item id="avatarModel2" src="HORSE.glb"></a-asset-item>
-            <a-asset-item id="avatarModel3" src="HORSE.glb"></a-asset-item>
+            <a-asset-item id="avatarModel3" src="Bunny.glb"></a-asset-item>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image="imageTargetSrc:chap0targets.mind" mindar-image-target="targetIndex: 0">
-            <a-entity gltf-model="rotation: 0 0 0; position: 0 0 0.1; scale: 1 1 1; src: #avatarModel0"
+            <a-image src="#card0"></a-image>
+            <a-entity gltf-model="#avatarModel0"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
             </a-entity>
-            <a-image src="#card0"></a-image>
         </a-entity>
 
         <a-entity mindar-image="imageTargetSrc:chap1targets.mind" mindar-image-target="targetIndex: 0">
-            <a-entity gltf-model="rotation: 0 0 0; position: 0 0 0.1; scale: 1 1 1; src: #avatarModel1"
+            <a-image src="#card1"></a-image>
+            <a-entity gltf-model="#avatarModel1"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
             </a-entity>
-            <a-image src="#card1"></a-image>
         </a-entity>
 
         <a-entity mindar-image="imageTargetSrc:chap2targets.mind" mindar-image-target="targetIndex: 0">
-            <a-entity gltf-model="rotation: 0 0 0; position: 0 0 0.1; scale: 1 1 1; src: #avatarModel2"
+            <a-image src="#card2"></a-image>
+            <a-entity gltf-model="#avatarModel2"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
             </a-entity>
-            <a-image src="#card2"></a-image>
         </a-entity>
 
         <a-entity mindar-image="imageTargetSrc:chap3targets.mind" mindar-image-target="targetIndex: 0">
-            <a-entity gltf-model="rotation: 0 0 0; position: 0 0 0.1; scale: 1 1 1; src: #avatarModel3"
+            <a-image src="#card3"></a-image>
+            <a-entity gltf-model="#avatarModel3"
                 animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
             </a-entity>
-            <a-image src="#card3"></a-image>
         </a-entity>
 
     </a-scene>
