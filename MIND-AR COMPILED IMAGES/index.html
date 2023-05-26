@@ -27,37 +27,47 @@
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity mindar-image-target="targetIndex: 0" id="target0"
-            mindar-image="src: #card0; onImageFound: #target0.setAttribute('visible', false);">
-            <a-image src="#card0" position="0 0 0.1" scale="1 1 1"></a-image>
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel0"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-entity mindar-image="src:chap0targets.mind #card0; onImageFound: hideLines(this)">
+                <a-image src="#card0" position="0 0 0.1" scale="1 1 1"></a-image>
+                <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel0"
+                    animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+                </a-gltf-model>
+            </a-entity>
         </a-entity>
 
-        <a-entity mindar-image-target="targetIndex: 1" id="target1"
-            mindar-image="src: #card1; onImageFound: #target1.setAttribute('visible', false);">
-            <a-image src="#card1" position="0 0 0.1" scale="1 1 1"></a-image>
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+        <a-entity mindar-image-target="targetIndex: 1">
+            <a-entity mindar-image="src:chap1targets.mind #card1; onImageFound: hideLines(this)">
+                <a-image src="#card1" position="0 0 0.1" scale="1 1 1"></a-image>
+                <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel"
+                    animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+                </a-gltf-model>
+            </a-entity>
         </a-entity>
 
-        <a-entity mindar-image-target="targetIndex: 2" id="target2"
-            mindar-image="src: #card2; onImageFound: #target2.setAttribute('visible', false);">
-            <a-image src="#card2" position="0 0 0.1" scale="1 1 1"></a-image>
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel1"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+        <a-entity mindar-image-target="targetIndex: 2">
+            <a-entity mindar-image="src:chap2targets.mind #card2; onImageFound: hideLines(this)">
+                <a-image src="#card2" position="0 0 0.1" scale="1 1 1"></a-image>
+                <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel1"
+                    animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+                </a-gltf-model>
+            </a-entity>
         </a-entity>
 
-        <a-entity mindar-image-target="targetIndex: 3" id="target3"
-            mindar-image="src: #card3; onImageFound: #target3.setAttribute('visible', false);">
-            <a-image src="#card3" position="0 0 0.1" scale="1 1 1"></a-image>
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel2"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+        <a-entity mindar-image-target="targetIndex: 3">
+            <a-entity mindar-image="src:chap3targets.mind #card3; onImageFound: hideLines(this)">
+                <a-image src="#card3" position="0 0 0.1" scale="1 1 1"></a-image>
+                <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel2"
+                    animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+                </a-gltf-model>
+            </a-entity>
         </a-entity>
+
+        <script>
+            function hideLines(entity) {
+                entity.setAttribute('visible', false);
+            }
+        </script>
 
     </a-scene>
 </body>
