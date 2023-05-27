@@ -1,75 +1,47 @@
-<!DOCTYPE html>
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script>
-        AFRAME.registerComponent('image-scanner', {
-            init: function () {
-                this.el.addEventListener('mindar-image-found', (event) => {
-                    const targetIndex = event.detail.targetIndex;
-                    const modelId = `avatarModel${targetIndex}`;
-                    const modelEl = document.querySelector(`#${modelId}`);
-                    modelEl.setAttribute('visible', true);
-                });
-
-                this.el.addEventListener('mindar-image-lost', (event) => {
-                    const targetIndex = event.detail.targetIndex;
-                    const modelId = `avatarModel${targetIndex}`;
-                    const modelEl = document.querySelector(`#${modelId}`);
-                    modelEl.setAttribute('visible', false);
-                });
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
 </head>
 
 <body>
-    <a-scene color-space="sRGB" renderer="colorManagement: true; physicallyCorrectLights: true"
-        vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" image-scanner>
-
+    <a-scene mindar-image="imageTargetSrc:chap0targets.mind; chap1targets.mind; chap2targets.mind; chap3targets.mind"
+        color-space="sRGB" renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
         <a-assets>
-            <!-- Image targets -->
-            <img id="imageTarget0" src="chap0targets.mind" />
-            <img id="imageTarget1" src="chap1targets.mind" />
-            <img id="imageTarget2" src="chap2targets.mind" />
-            <img id="imageTarget3" src="chap3targets.mind" />
-
-            <!-- GLB/GLTF assets -->
+            <img id="card0" src="IMAGES/img25.jpg" />
+            <img id="card1" src="IMAGES/img124.jpg" />
+            <img id="card2" src="IMAGES/img20.jpg" />
+            <img id="card3" src="IMAGES/img54.jpg" />
             <a-asset-item id="avatarModel0" src="HELI.glb"></a-asset-item>
-            <a-asset-item id="avatarModel1" src="girl.gltf"></a-asset-item>
-            <a-asset-item id="avatarModel2" src="HORSE.glb"></a-asset-item>
-            <a-asset-item id="avatarModel3" src="Bunny.glb"></a-asset-item>
+            <a-asset-item id="avatarModel1" src="HORSE.glb"></a-asset-item>
+            <a-asset-item id="avatarModel2" src="Bunny.glb"></a-asset-item>
+            <a-asset-item id="avatarModel3" src="girl.gltf"></a-asset-item>
         </a-assets>
 
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- Image target 0 -->
         <a-entity mindar-image-target="targetIndex: 0">
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel0" visible="false"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel0"
+                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
         </a-entity>
 
-        <!-- Image target 1 -->
         <a-entity mindar-image-target="targetIndex: 1">
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel1" visible="false"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel3"
+                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
         </a-entity>
 
-        <!-- Image target 2 -->
         <a-entity mindar-image-target="targetIndex: 2">
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel2" visible="false"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel1"
+                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
         </a-entity>
 
-        <!-- Image target 3 -->
         <a-entity mindar-image-target="targetIndex: 3">
-            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel3" visible="false"
-                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
-            </a-gltf-model>
+            <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="1 1 1" src="#avatarModel2"
+                animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
         </a-entity>
     </a-scene>
 </body>
