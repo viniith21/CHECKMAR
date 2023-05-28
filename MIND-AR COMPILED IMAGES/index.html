@@ -2,29 +2,43 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-arjs@latest/dist/mindar-image-aframe.min.js"></script>
 </head>
 
 <body>
     <a-scene mindar-image="imageTargetSrc:targets.mind;" color-space="sRGB"
         renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
+
         <a-assets>
             <a-asset-item id="girl" src="girl.gltf"></a-asset-item>
-            <a-asset-item id="HORSE" src="HORSE.glb"></a-asset-item>
+            <a-asset-item id="horse" src="HORSE.glb"></a-asset-item>
         </a-assets>
-
-        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image-target="targetIndex: 0">
             <a-gltf-model src="#girl" animation-mixer position="0 -0.25 0" scale="0.05 0.05 0.05"></a-gltf-model>
         </a-entity>
 
         <a-entity mindar-image-target="targetIndex: 1">
-            <a-gltf-model src="#HORSE" animation-mixer position="0 -0.25 0" scale="0.05 0.05 0.05"></a-gltf-model>
+            <a-gltf-model src="#horse" animation-mixer position="0 -0.25 0" scale="0.05 0.05 0.05"></a-gltf-model>
         </a-entity>
+
+        <a-entity position="0 0 -5">
+            <a-text value="Loading..." align="center" scale="2 2 2"></a-text>
+        </a-entity>
+
+        <a-entity mindar-image-status>
+            <a-entity position="0 0 -5" geometry="primitive: plane; width: 2; height: 2"
+                material="color: black; transparent: true; opacity: 0.8" visible="false" mindar-image-status-content>
+                <a-text value="Scan an image to place the model" align="center" color="white" wrap-count="20"
+                    position="0 0 0.01" scale="0.5 0.5 0.5">
+                </a-text>
+            </a-entity>
+        </a-entity>
+
+        <a-entity camera position="0 0 0" look-controls="enabled: false"></a-entity>
+
     </a-scene>
 </body>
 
