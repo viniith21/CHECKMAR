@@ -9,7 +9,7 @@
 
 <body>
     <a-scene mindar-image="imageTargetSrc:targets.mind; maxTrack: 4" color-space="sRGB"
-        renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+        renderer="colorManagement: true; physicallyCorrectLights: true" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
         <a-assets>
             <a-asset-item id="Bunny" src="Bunny.glb"></a-asset-item>
@@ -19,10 +19,12 @@
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
         <a-entity mindar-image-target="targetIndex: 0">
-            <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#Bunny" animation-mixer>
+            <a-gltf-model rotation="0 0 0" position="0 -0.25 0" scale="0.05 0.05 0.05" src="#Bunny"
+                animation-mixer></a-gltf-model>
         </a-entity>
         <a-entity mindar-image-target="targetIndex: 1">
-            <a-gltf-model rotation="0 0 0 " position="0 -0.25 0" scale="0.05 0.05 0.05" src="#HELI" animation-mixer>
+            <a-gltf-model rotation="0 0 0" position="0 -0.25 0" scale="0.05 0.05 0.05" src="#HELI"
+                animation-mixer></a-gltf-model>
         </a-entity>
     </a-scene>
 </body>
